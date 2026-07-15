@@ -2,7 +2,7 @@ extends StaticBody2D
 
 signal health_changed(current_hp, max_hp)
 
-@export var max_hp := 1000
+@export var max_hp := 100
 var current_hp: int
 
 func _ready() -> void:
@@ -20,6 +20,7 @@ func take_damage(amount: int):
 func destroy():
 	print("Tower destroyed!")
 	queue_free()
+	Game.end()
 
 func _process(delta: float) -> void:
 	pass

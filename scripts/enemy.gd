@@ -19,8 +19,6 @@ func _physics_process(delta: float) -> void:
 				body.take_damage(damage)
 				queue_free()
 				return
-	else:
-		print("No target")
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, 20, Color(0.867, 0.345, 0.188, 1.0))

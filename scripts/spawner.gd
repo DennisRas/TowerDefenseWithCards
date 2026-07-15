@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene
-@export var spawn_interval := 0.5
+@export var spawn_interval := 0.1
 
 var timer := 0.0
 
@@ -12,6 +12,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# if Game.state != Game.State.PLAYING:
+	# 	return
+	
 	timer += delta
 	
 	if timer >= spawn_interval:
@@ -32,3 +35,4 @@ func spawn_enemy():
 	)
 	
 	enemy.target = get_parent().get_node("Tower")
+	print("Enemy spawned")
