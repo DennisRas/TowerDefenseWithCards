@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://usjvnuy1iksc"]
+
+[ext_resource type="PackedScene" uid="uid://csgc5odhpgivy" path="res://scenes/tower.tscn" id="1_444vf"]
+[ext_resource type="PackedScene" uid="uid://cpft4ic0opq8f" path="res://scenes/enemy.tscn" id="1_olpmc"]
+[ext_resource type="Script" uid="uid://c735w5fv64qvh" path="res://scripts/tower.gd" id="2_27ga2"]
+[ext_resource type="Script" uid="uid://bijyjltvnj04h" path="res://scripts/spawner.gd" id="4_xdvfk"]
+
+[node name="Arena" type="Node2D" unique_id=842938838]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1460752905]
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=1640831846]
+
+[node name="Tower" parent="." unique_id=953788938 instance=ExtResource("1_444vf")]
+script = ExtResource("2_27ga2")
+
+[node name="Spawner" type="Node2D" parent="." unique_id=2059444154]
+script = ExtResource("4_xdvfk")
+enemy_scene = ExtResource("1_olpmc")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bd1iu2a6cy4j3"]
+
+[ext_resource type="Script" uid="uid://chae1o2mxn2h2" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://usjvnuy1iksc" path="res://scenes/arena.tscn" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://cr3vu3udfm46n" path="res://scripts/arena.gd" id="3_tbgi4"]
+
+[node name="Main" type="Node2D" unique_id=1025212204]
+script = ExtResource("1_sugp2")
+
+[node name="Arena" parent="." unique_id=842938838 instance=ExtResource("2_jyhfs")]
+script = ExtResource("3_tbgi4")
