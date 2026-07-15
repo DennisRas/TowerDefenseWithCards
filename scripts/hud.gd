@@ -18,3 +18,10 @@ func state_changed(state):
 		overlay.visible = true
 	else:
 		overlay.visible = false
+
+func _input(event):
+	if Game.state != Game.State.GAME_OVER:
+		return
+	
+	if event.is_action_pressed("ui_accept"):
+		Game.restart()

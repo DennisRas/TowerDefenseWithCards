@@ -17,3 +17,9 @@ func end():
 	get_tree().paused = true
 	state_changed.emit(state)
 	print("Game over!")
+
+func restart():
+	get_tree().reload_current_scene()
+	Game.state = Game.State.PLAYING
+	get_tree().paused = false
+	print("Game restarting")

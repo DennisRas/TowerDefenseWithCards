@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cr3vu3udfm46n" path="res://scripts/arena.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://baavm7skyvx5y" path="res://scripts/hud.gd" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://bqq8d3mm8lev7" path="res://scripts/game.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://c0b0cj4ov8o0s" path="res://scripts/restart_button.gd" id="5_tefeu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a2djh"]
 font_size = 64
@@ -53,6 +54,12 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_a2djh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="HUD/GameOverPanel/CenterContainer/VBoxContainer" unique_id=563887184]
+visible = false
+layout_mode = 2
+text = "Play Again"
+script = ExtResource("5_tefeu")
 
 [node name="ClickToRestart" type="Label" parent="HUD/GameOverPanel/CenterContainer/VBoxContainer" unique_id=203772242]
 layout_mode = 2
