@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cmi1577gfj4gp"]
+
+[ext_resource type="Script" uid="uid://bmpv1vh5yjb6y" path="res://game/abilities/laser/laser.gd" id="1_ipk1y"]
+
+[node name="Laser" type="Node2D" unique_id=2030557520]
+script = ExtResource("1_ipk1y")
+display_name = "Laser"
+metadata/_custom_type_script = "uid://2f7qnrluvu73"

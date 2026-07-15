@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://djm73mm4bqa53"]
+
+[ext_resource type="Script" uid="uid://b42bwe2c2cck7" path="res://intro/intro.gd" id="1_fpmxm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wn0qc"]
+font_size = 56
+
+[node name="Intro" type="Control" unique_id=133595438]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fpmxm")
+
+[node name="Panel" type="Panel" parent="." unique_id=1185835329]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="Panel" unique_id=1822753702]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -38.5
+offset_right = 357.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tower Defense With Cards"
+label_settings = SubResource("LabelSettings_wn0qc")
+horizontal_alignment = 1
+vertical_alignment = 1

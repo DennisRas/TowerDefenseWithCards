@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bcdbwdoecybjo"]
+
+[ext_resource type="PackedScene" uid="uid://78vufxadotor" path="res://game/abilities/ability.tscn" id="1_1ijsl"]
+[ext_resource type="Script" uid="uid://b0fcgqbi60tro" path="res://game/abilities/cannon/cannon.gd" id="2_qd8cx"]
+
+[node name="Canon" unique_id=105537937 instance=ExtResource("1_1ijsl")]
+script = ExtResource("2_qd8cx")
+display_name = "Canon"

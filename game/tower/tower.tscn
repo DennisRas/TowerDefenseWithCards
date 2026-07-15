@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://csgc5odhpgivy"]
 
-[ext_resource type="Script" uid="uid://c735w5fv64qvh" path="res://scripts/tower.gd" id="1_2x682"]
-[ext_resource type="PackedScene" uid="uid://b0gorkvnr3guh" path="res://scenes/projectile.tscn" id="2_ay4al"]
+[ext_resource type="Script" uid="uid://c735w5fv64qvh" path="res://game/tower/tower.gd" id="1_2x682"]
+[ext_resource type="PackedScene" uid="uid://b0gorkvnr3guh" path="res://game/abilities/pistol/bullet/bullet.tscn" id="2_ay4al"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7j8ug"]
 radius = 40.0
@@ -14,8 +14,4 @@ projectile_scene = ExtResource("2_ay4al")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=16373942]
 shape = SubResource("CircleShape2D_7j8ug")
 
-[node name="ShootTimer" type="Timer" parent="." unique_id=1176728158]
-wait_time = 0.094
-autostart = true
-
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[node name="Abilities" type="Node2D" parent="." unique_id=2140183390]

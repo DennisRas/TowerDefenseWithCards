@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene
-@export var spawn_interval := 0.1
+@export var spawn_interval := 1
 
 var timer := 0.0
 

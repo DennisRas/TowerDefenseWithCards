@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c4rwtkpg52rq7"]
+
+[ext_resource type="Script" uid="uid://b71iyyu78uet1" path="res://game/ui/overlays/cards/card.gd" id="1_d81rb"]
+
+[node name="Card" type="Button" unique_id=900972976]
+script = ExtResource("1_d81rb")

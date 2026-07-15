@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c8mjjuw6x845j"]
+
+[ext_resource type="Script" uid="uid://dd10nvs4s1fmy" path="res://game/ui/overlays/cards/selection.gd" id="1_cqxa1"]
+
+[node name="Cards" type="CanvasLayer" unique_id=713891547]
+script = ExtResource("1_cqxa1")
+
+[node name="Panel" type="Panel" parent="." unique_id=1764669290]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardContainer" type="VBoxContainer" parent="Panel" unique_id=513798526]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://3koxfecib0hq"]
+
+[ext_resource type="Script" uid="uid://dej6o5icaf83h" path="res://game/abilities/pistol/pistol.gd" id="1_ba6mk"]
+
+[node name="Pistol" type="Node2D" unique_id=383909525]
+script = ExtResource("1_ba6mk")
+display_name = "Pistol"

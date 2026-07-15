@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://8b53c4hf105y"]
+
+[ext_resource type="Script" uid="uid://w15gjt1tjfbc" path="res://game/abilities/aura/aura.gd" id="1_mwi0f"]
+
+[node name="Aura" type="Node2D" unique_id=1286048026]
+script = ExtResource("1_mwi0f")
+metadata/_custom_type_script = "uid://2f7qnrluvu73"
