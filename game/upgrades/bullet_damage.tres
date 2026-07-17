@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bdfp17hfo72tu"]
+
+[ext_resource type="Script" uid="uid://j8stetgnd0ie" path="res://game/upgrade.gd" id="1_2j7ao"]
+
+[resource]
+script = ExtResource("1_2j7ao")
+id = "bullet_damage"
+name = "Bullet Damage"
+description = "+20% bullet damage"
+amount = 0.2
+metadata/_custom_type_script = "uid://j8stetgnd0ie"

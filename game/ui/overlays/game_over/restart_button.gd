@@ -9,4 +9,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_pressed() -> void:
-	Game.restart()
+	#Game.restart()
+	get_tree().current_scene.restart()
+	pass

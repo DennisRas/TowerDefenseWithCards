@@ -61,7 +61,8 @@ func take_damage(amount: int):
 func destroy():
 	print("Tower destroyed!")
 	queue_free()
-	Game.end()
+	#Game.end()
+	get_tree().current_scene.end()
 
 func _process(delta: float) -> void:
 	pass

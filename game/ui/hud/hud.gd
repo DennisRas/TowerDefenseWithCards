@@ -17,8 +17,10 @@ func update_tower_health_text(current, max):
 		#overlay.visible = false
 
 func _input(event):
-	if Game.state != Game.State.GAME_OVER:
-		return
+	#if Game.state != Game.State.GAME_OVER:
+		#return
+	pass
 	
 	if event.is_action_pressed("ui_accept"):
-		Game.restart()
+		#Game.restart()
+		pass
