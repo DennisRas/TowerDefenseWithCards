@@ -3,12 +3,8 @@
 [ext_resource type="Script" uid="uid://bqq8d3mm8lev7" path="res://game/game.gd" id="1_h7iqs"]
 [ext_resource type="PackedScene" uid="uid://usjvnuy1iksc" path="res://game/arena/arena.tscn" id="2_4fuuu"]
 [ext_resource type="Script" uid="uid://cr3vu3udfm46n" path="res://game/arena/arena.gd" id="3_dxrkv"]
-[ext_resource type="Script" uid="uid://baavm7skyvx5y" path="res://game/ui/hud/hud.gd" id="4_dxrkv"]
-[ext_resource type="Script" uid="uid://c0b0cj4ov8o0s" path="res://game/ui/overlays/game_over/restart_button.gd" id="5_dakft"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_u5opy"]
-font_size = 64
-font_color = Color(0.92360234, 0.30274448, 0.10450987, 1)
+[ext_resource type="PackedScene" uid="uid://cghmc228ykhn2" path="res://game/ui/ui.tscn" id="4_dxrkv"]
+[ext_resource type="Script" uid="uid://bswlptk6c1j56" path="res://game/ui/ui.gd" id="5_dakft"]
 
 [node name="Game" type="Node2D" unique_id=920687291]
 script = ExtResource("1_h7iqs")
@@ -16,57 +12,5 @@ script = ExtResource("1_h7iqs")
 [node name="Arena" parent="." unique_id=842938838 instance=ExtResource("2_4fuuu")]
 script = ExtResource("3_dxrkv")
 
-[node name="Game" type="Node" parent="." unique_id=61635897]
-script = ExtResource("1_h7iqs")
-
-[node name="UI" type="CanvasLayer" parent="." unique_id=1021804737]
-
-[node name="HUD" type="CanvasLayer" parent="UI" unique_id=1102190214]
-process_mode = 3
-script = ExtResource("4_dxrkv")
-
-[node name="TowerHPLabel" type="Label" parent="UI/HUD" unique_id=1116858648]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 60.0
-offset_bottom = 43.0
-
-[node name="GameOverPanel" type="Panel" parent="UI/HUD" unique_id=1432564142]
-visible = false
-top_level = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/HUD/GameOverPanel" unique_id=2011767717]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/GameOverPanel/CenterContainer" unique_id=473673733]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="GameOver" type="Label" parent="UI/HUD/GameOverPanel/CenterContainer/VBoxContainer" unique_id=1454938552]
-layout_mode = 2
-text = "GAME OVER"
-label_settings = SubResource("LabelSettings_u5opy")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RestartButton" type="Button" parent="UI/HUD/GameOverPanel/CenterContainer/VBoxContainer" unique_id=605983621]
-visible = false
-layout_mode = 2
-text = "Play Again"
+[node name="Ui" parent="." unique_id=1763920532 instance=ExtResource("4_dxrkv")]
 script = ExtResource("5_dakft")
-
-[node name="ClickToRestart" type="Label" parent="UI/HUD/GameOverPanel/CenterContainer/VBoxContainer" unique_id=1823937404]
-layout_mode = 2
-text = "Click to start again"
-horizontal_alignment = 1
-vertical_alignment = 1

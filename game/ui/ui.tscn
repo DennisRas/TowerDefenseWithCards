@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cghmc228ykhn2"]
+
+[ext_resource type="PackedScene" uid="uid://mjtwl70ba5u8" path="res://game/ui/overlays/game_over/game_over.tscn" id="1_jxga3"]
+[ext_resource type="PackedScene" uid="uid://c3dirjb8i8kg5" path="res://game/ui/hud/hud.tscn" id="2_kvrpj"]
+
+[node name="Ui" type="CanvasLayer" unique_id=1763920532]
+
+[node name="GameOverOverlay" parent="." unique_id=282295180 instance=ExtResource("1_jxga3")]
+
+[node name="Hud" parent="." unique_id=50652635 instance=ExtResource("2_kvrpj")]
