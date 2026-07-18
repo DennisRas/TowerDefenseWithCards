@@ -1,10 +1,8 @@
-extends CanvasLayer
+extends Control
 
-signal ability_selected(scene)
+const CARD = preload("res://game/ui/overlays/cards/card.tscn")
 
-const CARD = preload("res://scenes/card.tscn")
-
-@onready var container = $Panel/CardContainer
+@onready var container = $Panel/CenterContainer/CardContainer
 
 func show_choices(choices: Array):
 	for child in container.get_children():
@@ -14,10 +12,10 @@ func show_choices(choices: Array):
 		var card = CARD.instantiate()
 		container.add_child(card)
 		card.setup(ability_scene)
-		card.selected.connect(
-			_on_card_selected
-		)
+
 	show()
 
-func _on_card_selected(scene):
-	ability_selected.emit(scene)
+func hide_choices():
+	hide()
+	for child in container.get_children():
+		child.queue_free()

@@ -1,4 +1,4 @@
 extends Button
 
 func _on_pressed() -> void:
-	get_tree().get_first_node_in_group("game").restart()
+	Gamestate.dispatch(Gamestate.Event.RESTART_REQUESTED)

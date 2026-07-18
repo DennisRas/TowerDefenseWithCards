@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://mjtwl70ba5u8" path="res://game/ui/overlays/game_over/game_over.tscn" id="1_jxga3"]
 [ext_resource type="PackedScene" uid="uid://c3dirjb8i8kg5" path="res://game/ui/hud/hud.tscn" id="2_kvrpj"]
+[ext_resource type="PackedScene" uid="uid://c8mjjuw6x845j" path="res://game/ui/overlays/cards/selection.tscn" id="3_cards"]
 
 [node name="Ui" type="CanvasLayer" unique_id=1763920532]
 
@@ -9,4 +10,7 @@
 visible = false
 
 [node name="Hud" parent="." unique_id=50652635 instance=ExtResource("2_kvrpj")]
+visible = false
+
+[node name="CardSelection" parent="." instance=ExtResource("3_cards")]
 visible = false

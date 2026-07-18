@@ -4,4 +4,5 @@
 
 [node name="Aura" type="Node2D" unique_id=1286048026]
 script = ExtResource("1_mwi0f")
+display_name = "Aura"
 metadata/_custom_type_script = "uid://2f7qnrluvu73"

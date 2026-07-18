@@ -3,8 +3,6 @@ extends Button
 
 var ability_scene: PackedScene
 
-signal selected(scene)
-
 func setup(scene: PackedScene):
 	ability_scene = scene
 	var ability = ability_scene.instantiate()
@@ -12,4 +10,4 @@ func setup(scene: PackedScene):
 	ability.queue_free()
 
 func _pressed():
-	selected.emit(ability_scene)
+	Gamestate.dispatch(Gamestate.Event.ABILITY_SELECTED, {"scene": ability_scene})

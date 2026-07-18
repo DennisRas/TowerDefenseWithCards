@@ -1,16 +1,14 @@
 extends Control
 
-signal finished
-
 var done := false
 
 func finish():
 	if done:
 		return
-	
+
 	done = true
-	finished.emit()
-	
+	Gamestate.dispatch(Gamestate.Event.INTRO_FINISHED)
+
 func _on_intro_timer_timeout():
 	finish()
 

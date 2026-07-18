@@ -1,9 +1,7 @@
 extends Control
 
-signal start_game_pressed
-
 func _on_start_game_pressed() -> void:
-	start_game_pressed.emit()
+	Gamestate.dispatch(Gamestate.Event.START_GAME_REQUESTED)
 
 func _on_exit_game_pressed() -> void:
-	get_tree().quit()
+	Gamestate.dispatch(Gamestate.Event.EXIT_GAME_REQUESTED)

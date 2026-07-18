@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b71iyyu78uet1" path="res://game/ui/overlays/cards/card.gd" id="1_d81rb"]
 
-[node name="Card" type="Button" unique_id=900972976]
+[node name="Card" type="Button"]
+custom_minimum_size = Vector2(160, 220)
+text = "Ability"
 script = ExtResource("1_d81rb")

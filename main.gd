@@ -7,15 +7,23 @@ extends Node
 var current_screen: Node
 
 func _ready():
-	intro.finished.connect(show_menu)
-	menu.start_game_pressed.connect(start_game)
+	Gamestate.event.connect(_on_gamestate_event)
 
 	for screen in [intro, menu, game]:
-		_set_screen_active(screen, false)
+		set_screen_active(screen, false)
 
 	show_intro()
 
-func _set_screen_active(screen: Node, active: bool):
+func _on_gamestate_event(type, _data):
+	match type:
+		Gamestate.Event.INTRO_FINISHED:
+			show_menu()
+		Gamestate.Event.START_GAME_REQUESTED:
+			start_game()
+		Gamestate.Event.EXIT_GAME_REQUESTED:
+			get_tree().quit()
+
+func set_screen_active(screen: Node, active: bool):
 	screen.visible = active
 	screen.process_mode = (
 		Node.PROCESS_MODE_INHERIT if active
@@ -27,12 +35,12 @@ func show_screen(screen: Node):
 		return
 
 	if current_screen:
-		_set_screen_active(current_screen, false)
+		set_screen_active(current_screen, false)
 		if current_screen == game:
 			game.set_ui_active(false)
 
 	current_screen = screen
-	_set_screen_active(screen, true)
+	set_screen_active(screen, true)
 
 	if screen == game:
 		game.set_ui_active(true)

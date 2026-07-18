@@ -1,28 +1,28 @@
 extends StaticBody2D
 
-@export var projectile_scene: PackedScene
 @export var max_hp := 50
 
 var current_hp: int
 
 @onready var enemies = $"../Enemies"
+@onready var abilities = $Abilities
 
 func _ready() -> void:
 	current_hp = max_hp
 	queue_redraw()
 
 func reset():
+	for child in abilities.get_children():
+		child.free()
 	current_hp = max_hp
 	Gamestate.dispatch(Gamestate.Event.TOWER_HEALTH_CHANGED, {
 		"current": current_hp,
 		"max": max_hp
 	})
 
-func _on_shoot_timer_timeout():
-	var enemy = get_closest_enemy()
-
-	if enemy:
-		shoot(enemy)
+func add_ability(ability_scene: PackedScene):
+	var ability = ability_scene.instantiate()
+	abilities.add_child(ability)
 
 func get_closest_enemy():
 	var closest = null
@@ -40,17 +40,10 @@ func get_closest_enemy():
 
 	return closest
 
-func shoot(enemy):
-	var projectile: Area2D = projectile_scene.instantiate()
-	get_parent().get_node("Projectiles").add_child(projectile)
-
-	projectile.global_position = global_position + projectile.direction * 60
-	projectile.z_index = 10
-	projectile.direction = (
-		global_position.direction_to(enemy.global_position)
-	)
-
 func take_damage(amount: int):
+	if current_hp <= 0:
+		return
+
 	current_hp = max(0, current_hp - amount)
 	Gamestate.dispatch(Gamestate.Event.TOWER_HEALTH_CHANGED, {
 		"current": current_hp,
@@ -58,10 +51,7 @@ func take_damage(amount: int):
 	})
 
 	if current_hp <= 0:
-		destroy()
-
-func destroy() -> void:
-	Gamestate.dispatch(Gamestate.Event.TOWER_DESTROYED)
+		Gamestate.dispatch(Gamestate.Event.TOWER_DESTROYED)
 
 func _draw() -> void:
 	draw_circle(
