@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://csgc5odhpgivy" path="res://game/tower/tower.tscn" id="1_444vf"]
 [ext_resource type="PackedScene" uid="uid://cpft4ic0opq8f" path="res://game/enemies/enemy.tscn" id="1_olpmc"]
-[ext_resource type="Script" uid="uid://bijyjltvnj04h" path="res://game/spawner.gd" id="4_xdvfk"]
+[ext_resource type="Script" uid="uid://bijyjltvnj04h" path="res://game/arena/spawner.gd" id="4_xdvfk"]
 
 [node name="Arena" type="Node2D" unique_id=842938838]
 

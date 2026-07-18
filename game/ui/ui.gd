@@ -3,34 +3,35 @@ extends CanvasLayer
 @onready var GameOverOverlay = $GameOverOverlay
 @onready var Hud = $Hud
 
-var game
-
 func _ready() -> void:
-	print_tree()
+	Gamestate.event.connect(_on_gamestate_event)
+	_apply_play_state(Gamestate.play_state)
 
-func bind(game_instance):
-	print("UI BIND CALLED")
-	game = game_instance
+func _on_gamestate_event(type, data):
+	match type:
+		Gamestate.Event.STATE_CHANGED:
+			_apply_play_state(data.get("state", Gamestate.play_state))
+		Gamestate.Event.TOWER_HEALTH_CHANGED:
+			Hud.update_tower_health_text(data.current, data.max)
 
-	print("tower:", game.tower)
-	print("state signal:", game.state_changed)
-	
-	game.tower.health_changed.connect(on_tower_health_changed)
-	game.state_changed.connect(on_game_state_changed)
+func _apply_play_state(play_state):
+	match play_state:
+		Gamestate.State.PLAYING:
+			Hud.visible = true
+			GameOverOverlay.visible = false
+		Gamestate.State.GAME_OVER:
+			Hud.visible = true
+			GameOverOverlay.visible = true
+		_:
+			Hud.visible = false
+			GameOverOverlay.visible = false
 
-func on_game_state_changed(state):
-	print("UI: Game state changed to: ", state)
-	#match state:
-		#Game.State.GAME_OVER:
-			#GameOverOverlay.Show()
-		#Game.State.PLAYING:
-			#Hud.show()
+func _get_game() -> Node:
+	return get_tree().get_first_node_in_group("game")
 
-func show_game_over():
-	pass
+func _input(event):
+	if Gamestate.play_state != Gamestate.State.GAME_OVER:
+		return
 
-func show_card_selection():
-	pass
-
-func on_tower_health_changed(current, max):
-	Hud.update_tower_health_text(current, max)
+	if event.is_action_pressed("ui_accept"):
+		_get_game().restart()

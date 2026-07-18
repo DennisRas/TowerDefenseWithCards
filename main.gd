@@ -1,35 +1,50 @@
 extends Node
 
-@onready var screen_container = $ScreenContainer
-var current_screen
+@onready var intro = $Intro
+@onready var menu = $Menu
+@onready var game = $Game
 
-var intro_screen = preload("res://intro/intro.tscn")
-var menu_screen = preload("res://menu/menu.tscn")
-var game_screen = preload("res://game/game.tscn")
+var current_screen: Node
 
 func _ready():
-	print("Main ready")
+	intro.finished.connect(show_menu)
+	menu.start_game_pressed.connect(start_game)
+
+	for screen in [intro, menu, game]:
+		_set_screen_active(screen, false)
+
 	show_intro()
 
-func change_screen(scene):
-	if current_screen:
-		current_screen.queue_free()
+func _set_screen_active(screen: Node, active: bool):
+	screen.visible = active
+	screen.process_mode = (
+		Node.PROCESS_MODE_INHERIT if active
+		else Node.PROCESS_MODE_DISABLED
+	)
 
-	current_screen = scene.instantiate()
-	screen_container.add_child(current_screen)
+func show_screen(screen: Node):
+	if current_screen == screen:
+		return
+
+	if current_screen:
+		_set_screen_active(current_screen, false)
+		if current_screen == game:
+			game.set_ui_active(false)
+
+	current_screen = screen
+	_set_screen_active(screen, true)
+
+	if screen == game:
+		game.set_ui_active(true)
 
 func show_intro():
-	print("Showing intro")
-	change_screen(intro_screen)
-	current_screen.finished.connect(show_menu)
-	
+	intro.done = false
+	show_screen(intro)
+
 func show_menu():
-	print("Showing menu")
-	change_screen(menu_screen)
-	current_screen.start_game_pressed.connect(start_game)
+	Gamestate.set_play_state(Gamestate.State.IDLE)
+	show_screen(menu)
 
 func start_game():
-	print("Showing game")
-	change_screen(game_screen)
-	print("Loaded scene:")
-	current_screen.print_tree()
+	show_screen(game)
+	game.start()

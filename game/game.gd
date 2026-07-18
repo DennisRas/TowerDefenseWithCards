@@ -1,51 +1,42 @@
-extends Node
+extends Node2D
 
 @onready var arena = $Arena
 @onready var tower = $Arena/Tower
+@onready var spawner = $Arena/Spawner
 @onready var ui = $Ui
-@onready var HUD = $Ui/Hud
-
-enum State {
-	PLAYING,
-	GAME_OVER
-}
-
-var state = State.PLAYING
-
-signal state_changed(state)
 
 func _ready():
-	print("=== GAME READY ===")
-	
-	arena = get_node("Arena")
-	ui = get_node("Ui")
+	add_to_group("game")
+	Gamestate.event.connect(_on_gamestate_event)
 
-	print("arena:", arena)
-	print("ui:", ui)
+func _on_gamestate_event(type, _data):
+	if type == Gamestate.Event.TOWER_DESTROYED:
+		end()
 
-	ui.bind(self)
+func set_ui_active(active: bool):
+	# ALWAYS while the game screen is up so overlays work when the tree is paused.
+	ui.process_mode = (
+		Node.PROCESS_MODE_ALWAYS if active
+		else Node.PROCESS_MODE_DISABLED
+	)
 
 func start():
-	print("Starting game...")
 	reset()
-
-func reset():
-	print("Resetting game...")
+	get_tree().paused = false
+	Gamestate.set_play_state(Gamestate.State.PLAYING)
 
 func end():
-	print("GAME END CALLED")
-	if state == State.GAME_OVER:
+	if Gamestate.play_state == Gamestate.State.GAME_OVER:
 		return
-	
+
 	get_tree().paused = true
-	state = State.GAME_OVER
-	state_changed.emit(state)
-	print("Game ended")
+	Gamestate.set_play_state(Gamestate.State.GAME_OVER)
 
 func restart():
-	print("Restarting game...")
-	get_tree().reload_current_scene() 	# Let's not do this, but just reset game instead
-	get_tree().paused = false
-	state = State.PLAYING
-	state_changed.emit(state)
-	print("Game restarted")
+	start()
+
+func reset():
+	Gamestate.reset()
+	arena.clear_entities()
+	spawner.reset()
+	tower.reset()

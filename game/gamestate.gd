@@ -2,7 +2,7 @@ class_name GameState
 extends Node
 
 enum State {
-	MENU,
+	IDLE,
 	PLAYING,
 	GAME_OVER
 }
@@ -10,8 +10,11 @@ enum State {
 enum Event {
 	STATE_CHANGED,
 	TOWER_HEALTH_CHANGED,
+	TOWER_DESTROYED,
 	ENEMY_KILLED
 }
+
+var play_state: State = State.IDLE
 
 var default_state = {
 	"score": 0,
@@ -25,6 +28,10 @@ signal event(type, data)
 
 func reset():
 	state = default_state.duplicate(true)
+
+func set_play_state(new_state: State):
+	play_state = new_state
+	dispatch(Event.STATE_CHANGED, {"state": play_state})
 
 func dispatch(type, data = {}):
 	event.emit(type, data)

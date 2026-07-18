@@ -15,3 +15,9 @@ projectile_scene = ExtResource("2_ay4al")
 shape = SubResource("CircleShape2D_7j8ug")
 
 [node name="Abilities" type="Node2D" parent="." unique_id=2140183390]
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1176728158]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

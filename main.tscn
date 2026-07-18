@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://bd1iu2a6cy4j3"]
 
 [ext_resource type="Script" uid="uid://chae1o2mxn2h2" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://djm73mm4bqa53" path="res://intro/intro.tscn" id="2_intro"]
+[ext_resource type="PackedScene" uid="uid://dwsqb26p8scco" path="res://menu/menu.tscn" id="3_menu"]
+[ext_resource type="PackedScene" uid="uid://ciprhksn06rlr" path="res://game/game.tscn" id="4_game"]
 
 [node name="Main" type="Node" unique_id=515956248]
 script = ExtResource("1_h2yge")
 
-[node name="ScreenContainer" type="Node" parent="." unique_id=821718790]
+[node name="Intro" parent="." instance=ExtResource("2_intro")]
+visible = false
+
+[node name="Menu" parent="." instance=ExtResource("3_menu")]
+visible = false
+
+[node name="Game" parent="." instance=ExtResource("4_game")]
+visible = false
