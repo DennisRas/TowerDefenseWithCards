@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var GameOverOverlay = $GameOverOverlay
 @onready var Hud = $Hud
 @onready var CardSelection = $CardSelection
+@onready var PauseMenu = $PauseMenu
 
 func _ready() -> void:
 	Gamestate.event.connect(_on_gamestate_event)
@@ -27,10 +28,12 @@ func apply_play_state(play_state):
 			Hud.visible = true
 			GameOverOverlay.visible = true
 			CardSelection.hide_choices()
+			PauseMenu.close()
 		_:
 			Hud.visible = false
 			GameOverOverlay.visible = false
 			CardSelection.hide_choices()
+			PauseMenu.close()
 
 func _input(event):
 	if Gamestate.play_state != Gamestate.State.GAME_OVER:

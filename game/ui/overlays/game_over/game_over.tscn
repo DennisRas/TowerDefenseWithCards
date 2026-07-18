@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://mjtwl70ba5u8"]
 
-[ext_resource type="Script" uid="uid://c0b0cj4ov8o0s" path="res://game/ui/overlays/game_over/restart_button.gd" id="1_tfte2"]
+[ext_resource type="Script" path="res://game/ui/overlays/game_over/game_over.gd" id="1_over"]
+[ext_resource type="PackedScene" uid="uid://dwsqb26p8scco" path="res://menu/menu.tscn" id="2_menu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eyfj1"]
 font_size = 64
 font_color = Color(0.92360234, 0.30274448, 0.10450987, 1)
 
-[node name="GameOverOverlay" type="Control" unique_id=282295180]
+[node name="GameOverOverlay" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_over")
 
-[node name="Panel" type="Panel" parent="." unique_id=731649319]
-top_level = true
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=335107672]
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,26 +32,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer" unique_id=846729592]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 16
+alignment = 1
 
-[node name="GameOver" type="Label" parent="Panel/CenterContainer/VBoxContainer" unique_id=569559868]
+[node name="GameOver" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_eyfj1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ClickToRestart" type="Label" parent="Panel/CenterContainer/VBoxContainer" unique_id=1598053902]
+[node name="ClickToRestart" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "You really suck at this, huh?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Restart" type="Button" parent="Panel/CenterContainer/VBoxContainer" unique_id=1888671696]
+[node name="Menu" parent="Panel/CenterContainer/VBoxContainer" instance=ExtResource("2_menu")]
 layout_mode = 2
-text = "Go again!"
-script = ExtResource("1_tfte2")
-
-[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/Restart" to="Panel/CenterContainer/VBoxContainer/Restart" method="_on_pressed"]
+size_flags_horizontal = 4

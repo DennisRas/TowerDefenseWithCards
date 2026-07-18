@@ -1,18 +1,71 @@
 [gd_scene format=3 uid="uid://bd1iu2a6cy4j3"]
 
 [ext_resource type="Script" uid="uid://chae1o2mxn2h2" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://djm73mm4bqa53" path="res://intro/intro.tscn" id="2_intro"]
 [ext_resource type="PackedScene" uid="uid://dwsqb26p8scco" path="res://menu/menu.tscn" id="3_menu"]
 [ext_resource type="PackedScene" uid="uid://ciprhksn06rlr" path="res://game/game.tscn" id="4_game"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 56
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_intro"]
+bg_color = Color(0.02, 0.035, 0.07, 1)
 
 [node name="Main" type="Node" unique_id=515956248]
 script = ExtResource("1_h2yge")
 
-[node name="Intro" parent="." instance=ExtResource("2_intro")]
-visible = false
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Menu" parent="." instance=ExtResource("3_menu")]
-visible = false
+[node name="Panel" type="Panel" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" parent="MainMenu/Panel" instance=ExtResource("3_menu")]
+layout_mode = 1
+
+[node name="Intro" type="Control" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MainMenu/Intro"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_intro")
+
+[node name="GameTitle" type="Label" parent="MainMenu/Intro/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -38.5
+offset_right = 357.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tower Defense With Cards"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Game" parent="." instance=ExtResource("4_game")]
 visible = false

@@ -1,58 +1,69 @@
 extends Node
 
-@onready var intro = $Intro
-@onready var menu = $Menu
+@onready var main_menu: Control = $MainMenu
+@onready var intro: Control = $MainMenu/Intro
+@onready var menu: Menu = $MainMenu/Panel/Menu
 @onready var game = $Game
 
-var current_screen: Node
+var intro_done := false
 
-func _ready():
+func _ready() -> void:
 	Gamestate.event.connect(_on_gamestate_event)
+	menu.apply_context(Menu.Context.MAIN)
 
-	for screen in [intro, menu, game]:
-		set_screen_active(screen, false)
+	set_active(game, false)
+	game.set_ui_active(false)
 
-	show_intro()
+	set_active(main_menu, true)
+	intro_done = false
+	intro.visible = true
 
-func _on_gamestate_event(type, _data):
+func _on_gamestate_event(type, _data) -> void:
 	match type:
-		Gamestate.Event.INTRO_FINISHED:
-			show_menu()
 		Gamestate.Event.START_GAME_REQUESTED:
 			start_game()
+		Gamestate.Event.ABANDON_RUN_REQUESTED:
+			abandon_run()
 		Gamestate.Event.EXIT_GAME_REQUESTED:
 			get_tree().quit()
 
-func set_screen_active(screen: Node, active: bool):
-	screen.visible = active
-	screen.process_mode = (
+func _input(event: InputEvent) -> void:
+	if intro_done or not intro.visible:
+		return
+
+	if event.is_action_pressed("ui_accept"):
+		finish_intro()
+		get_viewport().set_input_as_handled()
+
+func set_active(node: Node, active: bool) -> void:
+	node.visible = active
+	node.process_mode = (
 		Node.PROCESS_MODE_INHERIT if active
 		else Node.PROCESS_MODE_DISABLED
 	)
 
-func show_screen(screen: Node):
-	if current_screen == screen:
+func finish_intro() -> void:
+	if intro_done:
 		return
 
-	if current_screen:
-		set_screen_active(current_screen, false)
-		if current_screen == game:
-			game.set_ui_active(false)
+	intro_done = true
+	intro.visible = false
 
-	current_screen = screen
-	set_screen_active(screen, true)
-
-	if screen == game:
-		game.set_ui_active(true)
-
-func show_intro():
-	intro.done = false
-	show_screen(intro)
-
-func show_menu():
+func show_main_menu() -> void:
+	get_tree().paused = false
 	Gamestate.set_play_state(Gamestate.State.IDLE)
-	show_screen(menu)
+	intro.visible = false
+	set_active(game, false)
+	game.set_ui_active(false)
+	set_active(main_menu, true)
 
-func start_game():
-	show_screen(game)
+func start_game() -> void:
+	finish_intro()
+	set_active(main_menu, false)
+	set_active(game, true)
+	game.set_ui_active(true)
 	game.start()
+
+func abandon_run() -> void:
+	game.reset()
+	show_main_menu()

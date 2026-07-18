@@ -33,6 +33,7 @@ func set_ui_active(active: bool):
 	)
 
 func start():
+	ui.PauseMenu.close()
 	reset()
 
 	if tower.abilities.get_child_count() == 0:

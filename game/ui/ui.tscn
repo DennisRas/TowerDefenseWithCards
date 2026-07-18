@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://mjtwl70ba5u8" path="res://game/ui/overlays/game_over/game_over.tscn" id="1_jxga3"]
 [ext_resource type="PackedScene" uid="uid://c3dirjb8i8kg5" path="res://game/ui/hud/hud.tscn" id="2_kvrpj"]
 [ext_resource type="PackedScene" uid="uid://c8mjjuw6x845j" path="res://game/ui/overlays/cards/selection.tscn" id="3_cards"]
+[ext_resource type="PackedScene" uid="uid://bpausemenusc01" path="res://game/ui/overlays/pause_menu/pause_menu.tscn" id="5_pause"]
 
 [node name="Ui" type="CanvasLayer" unique_id=1763920532]
 
@@ -13,4 +14,7 @@ visible = false
 visible = false
 
 [node name="CardSelection" parent="." instance=ExtResource("3_cards")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_pause")]
 visible = false
