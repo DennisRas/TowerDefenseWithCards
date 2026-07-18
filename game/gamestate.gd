@@ -27,7 +27,8 @@ var default_state = {
 	"score": 0,
 	"wave": 1,
 	"kills": 0,
-	"xp": 0
+	"xp": 0,
+	"damage_dealt": 0.0
 }
 
 var state = default_state.duplicate(true)

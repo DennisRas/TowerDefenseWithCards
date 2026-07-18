@@ -5,3 +5,8 @@
 [node name="Pistol" type="Node2D" unique_id=383909525]
 script = ExtResource("1_ba6mk")
 display_name = "Pistol"
+type = 0
+damage = 10.0
+cooldown = 0.5
+projectile_speed = 500.0
+projectile_size = 5.0

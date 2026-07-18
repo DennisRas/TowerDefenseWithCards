@@ -5,4 +5,10 @@
 [node name="Laser" type="Node2D" unique_id=2030557520]
 script = ExtResource("1_ipk1y")
 display_name = "Laser"
+type = 1
+damage = 40.0
+cooldown = 1.0
+duration = 2.0
+beam_width = 5.0
+beam_color = Color(0.9, 0.2, 0.15, 0.95)
 metadata/_custom_type_script = "uid://2f7qnrluvu73"
