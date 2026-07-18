@@ -1,9 +1,11 @@
 extends Control
 
 const INFO_ROW = preload("res://game/ui/hud/info_row.tscn")
+const ABILITY_INFO_PANEL = preload("res://game/ui/hud/ability_info_panel.tscn")
 
 @onready var info_panel = $InfoPanel
 @onready var rows_container = $InfoPanel/Rows
+@onready var ability_panels = $AbilityPanels
 
 var rows := {}
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 
 	Gamestate.event.connect(_on_gamestate_event)
 	refresh()
+	refresh_abilities()
 
 func add_row(id: String, label: String) -> void:
 	var row = INFO_ROW.instantiate()
@@ -32,6 +35,20 @@ func refresh() -> void:
 	set_value("kills", str(Gamestate.state.kills))
 	set_value("wave", str(Gamestate.state.wave))
 
+func refresh_abilities() -> void:
+	for child in ability_panels.get_children():
+		child.free()
+
+	var game = get_tree().get_first_node_in_group("game")
+	if game == null:
+		return
+
+	for ability in game.tower.abilities.get_children():
+		if ability is Ability:
+			var panel = ABILITY_INFO_PANEL.instantiate()
+			ability_panels.add_child(panel)
+			panel.setup(ability)
+
 func _on_gamestate_event(type, data) -> void:
 	match type:
 		Gamestate.Event.TOWER_HEALTH_CHANGED:
@@ -39,5 +56,8 @@ func _on_gamestate_event(type, data) -> void:
 		Gamestate.Event.ENEMY_KILLED:
 			set_value("xp", str(Gamestate.state.xp))
 			set_value("kills", str(Gamestate.state.kills))
+		Gamestate.Event.ABILITIES_CHANGED:
+			refresh_abilities()
 		Gamestate.Event.STATE_CHANGED:
 			refresh()
+			refresh_abilities()

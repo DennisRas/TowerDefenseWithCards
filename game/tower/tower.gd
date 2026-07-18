@@ -19,10 +19,12 @@ func reset():
 		"current": current_hp,
 		"max": max_hp
 	})
+	Gamestate.dispatch(Gamestate.Event.ABILITIES_CHANGED)
 
 func add_ability(ability_scene: PackedScene):
 	var ability = ability_scene.instantiate()
 	abilities.add_child(ability)
+	Gamestate.dispatch(Gamestate.Event.ABILITIES_CHANGED)
 
 func get_closest_enemy():
 	var closest = null
