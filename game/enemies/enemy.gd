@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody2D
 
 @export var speed := 70.0
@@ -9,17 +10,29 @@ extends CharacterBody2D
 var current_hp: float
 var target: Node2D = null
 
+## First level this type can appear on.
+static func get_min_level() -> int:
+	return 1
+
+## Seconds between spawns of this type at the given level.
+static func get_spawn_interval(_level: int) -> float:
+	return 1.0
+
+## Apply per-type stat scaling for the current level (before entering the tree).
+func apply_level(_level: int) -> void:
+	pass
+
 func _ready() -> void:
 	current_hp = max_hp
 	queue_redraw()
 
-func take_damage(amount: float):
+func take_damage(amount: float) -> void:
 	current_hp = max(0, current_hp - amount)
 
 	if current_hp <= 0:
 		destroy()
 
-func destroy():
+func destroy() -> void:
 	Gamestate.state.kills += 1
 	Gamestate.state.xp += xp
 	Gamestate.dispatch(Gamestate.Event.ENEMY_KILLED, {
@@ -55,6 +68,3 @@ func _physics_process(_delta: float) -> void:
 			body.take_damage(damage)
 			destroy()
 			return
-
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, radius, Color(0.867, 0.345, 0.188, 1.0))

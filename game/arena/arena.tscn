@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://usjvnuy1iksc"]
 
 [ext_resource type="PackedScene" uid="uid://csgc5odhpgivy" path="res://game/tower/tower.tscn" id="1_444vf"]
-[ext_resource type="PackedScene" uid="uid://cpft4ic0opq8f" path="res://game/enemies/enemy.tscn" id="1_olpmc"]
-[ext_resource type="Script" uid="uid://bijyjltvnj04h" path="res://game/arena/spawner.gd" id="4_xdvfk"]
+[ext_resource type="Script" path="res://game/arena/spawner.gd" id="4_xdvfk"]
+[ext_resource type="PackedScene" uid="uid://enemysoldier001" path="res://game/enemies/soldier/soldier.tscn" id="5_soldier"]
+[ext_resource type="PackedScene" uid="uid://enemybiker00001" path="res://game/enemies/biker/biker.tscn" id="6_biker"]
+[ext_resource type="PackedScene" uid="uid://enemytank000001" path="res://game/enemies/tank/tank.tscn" id="7_tank"]
 
-[node name="Arena" type="Node2D" unique_id=842938838]
+[node name="Arena" type="Node2D"]
 
-[node name="Enemies" type="Node2D" parent="." unique_id=1460752905]
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Projectiles" type="Node2D" parent="." unique_id=1640831846]
+[node name="Projectiles" type="Node2D" parent="."]
 
-[node name="Tower" parent="." unique_id=953788938 instance=ExtResource("1_444vf")]
+[node name="Tower" parent="." instance=ExtResource("1_444vf")]
 
-[node name="Spawner" type="Node2D" parent="." unique_id=2059444154]
+[node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("4_xdvfk")
-enemy_scene = ExtResource("1_olpmc")
+enemy_scenes = Array[PackedScene]([ExtResource("5_soldier"), ExtResource("6_biker"), ExtResource("7_tank")])

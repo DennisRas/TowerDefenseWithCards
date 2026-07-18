@@ -11,14 +11,19 @@ var rows := {}
 
 func _ready() -> void:
 	add_row("tower_hp", "Tower HP")
-	add_row("xp", "Experience")
+	add_row("level", "Level")
+	add_row("time", "Time")
 	add_row("kills", "Kills")
-	add_row("wave", "Wave")
 	info_panel.reset_size()
 
 	Gamestate.event.connect(_on_gamestate_event)
 	refresh()
 	refresh_abilities()
+
+func _process(_delta: float) -> void:
+	if Gamestate.play_state != Gamestate.State.PLAYING:
+		return
+	set_value("time", format_time(Gamestate.level_time_left()))
 
 func add_row(id: String, label: String) -> void:
 	var row = INFO_ROW.instantiate()
@@ -30,10 +35,16 @@ func set_value(id: String, value: String) -> void:
 	if rows.has(id):
 		rows[id].set_value(value)
 
+func format_time(seconds: float) -> String:
+	var total = maxi(0, ceili(seconds))
+	var m = total / 60
+	var s = total % 60
+	return "%d:%02d" % [m, s]
+
 func refresh() -> void:
-	set_value("xp", str(Gamestate.state.xp))
+	set_value("level", str(Gamestate.state.level.number))
+	set_value("time", format_time(Gamestate.level_time_left()))
 	set_value("kills", str(Gamestate.state.kills))
-	set_value("wave", str(Gamestate.state.wave))
 
 func refresh_abilities() -> void:
 	for child in ability_panels.get_children():
@@ -54,8 +65,10 @@ func _on_gamestate_event(type, data) -> void:
 		Gamestate.Event.TOWER_HEALTH_CHANGED:
 			set_value("tower_hp", "%d/%d" % [data.current, data.max])
 		Gamestate.Event.ENEMY_KILLED:
-			set_value("xp", str(Gamestate.state.xp))
 			set_value("kills", str(Gamestate.state.kills))
+		Gamestate.Event.LEVEL_CHANGED:
+			set_value("level", str(Gamestate.state.level.number))
+			set_value("time", format_time(Gamestate.level_time_left()))
 		Gamestate.Event.ABILITIES_CHANGED:
 			refresh_abilities()
 		Gamestate.Event.STATE_CHANGED:

@@ -46,6 +46,7 @@ func start():
 func begin_play():
 	get_tree().paused = false
 	Gamestate.set_play_state(Gamestate.State.PLAYING)
+	Gamestate.start_level(1)
 
 func end():
 	if Gamestate.play_state == Gamestate.State.GAME_OVER:
