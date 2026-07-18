@@ -28,6 +28,7 @@ func _ready() -> void:
 
 func take_damage(amount: float) -> void:
 	current_hp = max(0, current_hp - amount)
+	queue_redraw()
 
 	if current_hp <= 0:
 		destroy()
@@ -68,3 +69,21 @@ func _physics_process(_delta: float) -> void:
 			body.take_damage(damage)
 			destroy()
 			return
+
+func _draw() -> void:
+	draw_body()
+	draw_health_bar()
+
+func draw_body() -> void:
+	pass
+
+func draw_health_bar() -> void:
+	var bar_width = maxf(24.0, radius * 2.0)
+	var bar_height = 4.0
+	var gap = 6.0
+	var top = -(radius + gap + bar_height)
+	var origin = Vector2(-bar_width * 0.5, top)
+	var ratio = clampf(current_hp / max_hp, 0.0, 1.0) if max_hp > 0.0 else 0.0
+
+	draw_rect(Rect2(origin, Vector2(bar_width, bar_height)), Color(0.1, 0.1, 0.12, 0.85))
+	draw_rect(Rect2(origin, Vector2(bar_width * ratio, bar_height)), Color(0.25, 0.85, 0.35, 1.0))

@@ -15,6 +15,6 @@ func apply_level(level: int) -> void:
 	speed *= 1.0 + t * 0.015
 	damage *= 1.0 + t * 0.06
 
-func _draw() -> void:
+func draw_body() -> void:
 	var s = radius * 1.6
 	draw_rect(Rect2(Vector2(-s * 0.5, -s * 0.5), Vector2(s, s)), COLOR)

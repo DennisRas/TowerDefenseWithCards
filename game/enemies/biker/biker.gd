@@ -15,7 +15,7 @@ func apply_level(level: int) -> void:
 	speed *= 1.0 + t * 0.035
 	damage *= 1.0 + t * 0.04
 
-func _draw() -> void:
+func draw_body() -> void:
 	var h = radius * 1.2
 	var points = PackedVector2Array([
 		Vector2(0, -h),

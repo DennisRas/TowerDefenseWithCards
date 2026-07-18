@@ -15,5 +15,5 @@ func apply_level(level: int) -> void:
 	speed *= 1.0 + t * 0.02
 	damage *= 1.0 + t * 0.05
 
-func _draw() -> void:
+func draw_body() -> void:
 	draw_circle(Vector2.ZERO, radius, COLOR)
