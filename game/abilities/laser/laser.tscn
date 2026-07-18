@@ -6,7 +6,7 @@
 script = ExtResource("1_ipk1y")
 display_name = "Laser"
 type = 1
-damage = 40.0
+damage = 20.0
 cooldown = 1.0
 duration = 2.0
 beam_width = 5.0

@@ -24,6 +24,20 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
+	if not is_on_screen():
+		queue_free()
+
+func is_on_screen() -> bool:
+	var rect = get_viewport_rect()
+	var p = global_position
+	var m = size
+	return (
+		p.x >= -m
+		and p.y >= -m
+		and p.x <= rect.size.x + m
+		and p.y <= rect.size.y + m
+	)
+
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, size, Color(0.859, 0.541, 0.085, 1.0))
 

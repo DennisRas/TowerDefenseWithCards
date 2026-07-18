@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var damage := 10.0
 @export var max_hp := 10.0
 @export var xp := 1
+@export var radius := 20.0
 
 var current_hp: float
 var target: Node2D = null
@@ -27,6 +28,17 @@ func destroy():
 	})
 	queue_free()
 
+func is_targetable() -> bool:
+	var size = get_viewport_rect().size
+	var inset := 8.0
+	var p = global_position
+	return (
+		p.x >= inset
+		and p.y >= inset
+		and p.x <= size.x - inset
+		and p.y <= size.y - inset
+	)
+
 func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(target):
 		return
@@ -45,4 +57,4 @@ func _physics_process(_delta: float) -> void:
 			return
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, 20, Color(0.867, 0.345, 0.188, 1.0))
+	draw_circle(Vector2.ZERO, radius, Color(0.867, 0.345, 0.188, 1.0))

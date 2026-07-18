@@ -33,6 +33,8 @@ func get_closest_enemy():
 	for enemy in enemies.get_children():
 		if not is_instance_valid(enemy):
 			continue
+		if enemy.has_method("is_targetable") and not enemy.is_targetable():
+			continue
 
 		var d = global_position.distance_to(enemy.global_position)
 
