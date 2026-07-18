@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/ui/hud/info_row.gd" id="1_row"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_info"]
+font_size = 13
+font_color = Color(0.82, 0.88, 0.92, 1)
+
+[node name="InfoRow" type="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+theme_override_constants/separation = 12
+script = ExtResource("1_row")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Label"
+label_settings = SubResource("LabelSettings_info")
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "-"
+label_settings = SubResource("LabelSettings_info")
+horizontal_alignment = 2

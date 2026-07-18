@@ -25,7 +25,8 @@ var play_state: State = State.IDLE
 var default_state = {
 	"score": 0,
 	"wave": 1,
-	"kills": 0
+	"kills": 0,
+	"xp": 0
 }
 
 var state = default_state.duplicate(true)

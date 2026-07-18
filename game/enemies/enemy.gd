@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed := 500.0
 @export var damage := 10.0
 @export var max_hp := 10.0
+@export var xp := 1
 
 var current_hp: float
 var target: Node2D = null
@@ -19,8 +20,10 @@ func take_damage(amount: float):
 
 func destroy():
 	Gamestate.state.kills += 1
+	Gamestate.state.xp += xp
 	Gamestate.dispatch(Gamestate.Event.ENEMY_KILLED, {
-		"kills": Gamestate.state.kills
+		"kills": Gamestate.state.kills,
+		"xp": xp
 	})
 	queue_free()
 

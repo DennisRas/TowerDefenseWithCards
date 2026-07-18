@@ -12,8 +12,6 @@ func _on_gamestate_event(type, data):
 	match type:
 		Gamestate.Event.STATE_CHANGED:
 			apply_play_state(data.get("state", Gamestate.play_state))
-		Gamestate.Event.TOWER_HEALTH_CHANGED:
-			Hud.update_tower_health_text(data.current, data.max)
 
 func apply_play_state(play_state):
 	match play_state:

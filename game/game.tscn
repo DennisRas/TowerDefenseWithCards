@@ -9,6 +9,18 @@
 [node name="Game" type="Node2D" unique_id=920687291]
 script = ExtResource("1_h7iqs")
 
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.035, 0.07, 1)
+
 [node name="Arena" parent="." unique_id=842938838 instance=ExtResource("2_4fuuu")]
 script = ExtResource("3_dxrkv")
 
