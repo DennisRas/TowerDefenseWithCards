@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=11 format=3]
+
+[ext_resource type="StyleBox" path="res://themes/styles/button_normal.tres" id="1_btn_normal"]
+[ext_resource type="StyleBox" path="res://themes/styles/button_hover.tres" id="2_btn_hover"]
+[ext_resource type="StyleBox" path="res://themes/styles/button_pressed.tres" id="3_btn_pressed"]
+[ext_resource type="StyleBox" path="res://themes/styles/button_focus.tres" id="4_btn_focus"]
+[ext_resource type="StyleBox" path="res://themes/styles/button_disabled.tres" id="5_btn_disabled"]
+[ext_resource type="StyleBox" path="res://themes/styles/card_normal.tres" id="6_card_normal"]
+[ext_resource type="StyleBox" path="res://themes/styles/card_hover.tres" id="7_card_hover"]
+[ext_resource type="StyleBox" path="res://themes/styles/card_pressed.tres" id="8_card_pressed"]
+[ext_resource type="StyleBox" path="res://themes/styles/card_focus.tres" id="9_card_focus"]
+[ext_resource type="StyleBox" path="res://themes/styles/info_panel.tres" id="10_info_panel"]
+
+[resource]
+Button/colors/font_color = Color(0.9, 0.94, 0.96, 1)
+Button/colors/font_disabled_color = Color(0.9, 0.94, 0.96, 0.4)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.75, 0.82, 0.85, 1)
+Button/styles/disabled = ExtResource("5_btn_disabled")
+Button/styles/focus = ExtResource("4_btn_focus")
+Button/styles/hover = ExtResource("2_btn_hover")
+Button/styles/normal = ExtResource("1_btn_normal")
+Button/styles/pressed = ExtResource("3_btn_pressed")
+Card/base_type = &"Button"
+Card/colors/font_color = Color(0.9, 0.94, 0.96, 1)
+Card/colors/font_focus_color = Color(1, 1, 1, 1)
+Card/colors/font_hover_color = Color(1, 1, 1, 1)
+Card/colors/font_pressed_color = Color(0.75, 0.82, 0.85, 1)
+Card/styles/focus = ExtResource("9_card_focus")
+Card/styles/hover = ExtResource("7_card_hover")
+Card/styles/normal = ExtResource("6_card_normal")
+Card/styles/pressed = ExtResource("8_card_pressed")
+InfoPanel/base_type = &"PanelContainer"
+InfoPanel/styles/panel = ExtResource("10_info_panel")

@@ -2,19 +2,6 @@
 
 [ext_resource type="Script" uid="uid://db8sdnwo04lhf" path="res://menu/menu.gd" id="1_j0t7f"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0t7f"]
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.14022583, 0.23467252, 0.16470808, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [node name="Menu" type="Control" unique_id=1552393694]
 layout_mode = 3
 anchors_preset = 15
@@ -49,12 +36,10 @@ alignment = 1
 
 [node name="StartGame" type="Button" parent="Panel/VBoxContainer" unique_id=261342499]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_j0t7f")
 text = "Start Game"
 
 [node name="ExitGame" type="Button" parent="Panel/VBoxContainer" unique_id=832464015]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_j0t7f")
 text = "Quit"
 
 [connection signal="pressed" from="Panel/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]

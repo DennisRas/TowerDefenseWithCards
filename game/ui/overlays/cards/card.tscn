@@ -4,5 +4,6 @@
 
 [node name="Card" type="Button"]
 custom_minimum_size = Vector2(160, 220)
+theme_type_variation = &"Card"
 text = "Ability"
 script = ExtResource("1_d81rb")
