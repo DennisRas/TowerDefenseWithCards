@@ -4,16 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dwsqb26p8scco" path="res://menu/menu.tscn" id="3_menu"]
 [ext_resource type="PackedScene" uid="uid://ciprhksn06rlr" path="res://game/game.tscn" id="4_game"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_title"]
-font_size = 56
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_intro"]
 bg_color = Color(0.02, 0.035, 0.07, 1)
 
 [node name="Main" type="Node" unique_id=515956248]
 script = ExtResource("1_h2yge")
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="MainMenu" type="Control" parent="." unique_id=193515409]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MainMenu"]
+[node name="Panel" type="Panel" parent="MainMenu" unique_id=115200995]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,10 +26,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Menu" parent="MainMenu/Panel" instance=ExtResource("3_menu")]
+[node name="Menu" parent="MainMenu/Panel" unique_id=180665882 instance=ExtResource("3_menu")]
 layout_mode = 1
 
-[node name="Intro" type="Control" parent="MainMenu"]
+[node name="Intro" type="Control" parent="MainMenu" unique_id=1707054925]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +37,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MainMenu/Intro"]
+[node name="Panel" type="Panel" parent="MainMenu/Intro" unique_id=1604769536]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_intro")
 
-[node name="GameTitle" type="Label" parent="MainMenu/Intro/Panel"]
+[node name="GameTitle" type="Label" parent="MainMenu/Intro/Panel" unique_id=2018173381]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,10 +59,27 @@ offset_right = 357.0
 offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 59
 text = "Tower Defense With Cards"
-label_settings = SubResource("LabelSettings_title")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Game" parent="." instance=ExtResource("4_game")]
+[node name="PressToSkip" type="Label" parent="MainMenu/Intro/Panel" unique_id=1020247564]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -97.5
+offset_top = -39.330017
+offset_right = 97.5
+offset_bottom = -16.330017
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Space/Enter to skip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game" parent="." unique_id=127213595 instance=ExtResource("4_game")]
 visible = false

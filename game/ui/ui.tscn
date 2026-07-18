@@ -7,10 +7,10 @@
 
 [node name="Ui" type="CanvasLayer" unique_id=1763920532]
 
-[node name="GameOverOverlay" parent="." unique_id=282295180 instance=ExtResource("1_jxga3")]
+[node name="GameOverOverlay" parent="." instance=ExtResource("1_jxga3")]
 visible = false
 
-[node name="Hud" parent="." unique_id=50652635 instance=ExtResource("2_kvrpj")]
+[node name="Hud" parent="." instance=ExtResource("2_kvrpj")]
 visible = false
 
 [node name="CardSelection" parent="." instance=ExtResource("3_cards")]

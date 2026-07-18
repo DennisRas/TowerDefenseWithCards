@@ -7,6 +7,9 @@
 font_size = 64
 font_color = Color(0.92360234, 0.30274448, 0.10450987, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_overlay"]
+bg_color = Color(0.02, 0.035, 0.07, 0.92)
+
 [node name="GameOverOverlay" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -23,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_overlay")
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel"]
 layout_mode = 1
@@ -44,7 +48,7 @@ label_settings = SubResource("LabelSettings_eyfj1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ClickToRestart" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="Subheader" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "You really suck at this, huh?"
 horizontal_alignment = 1
@@ -53,3 +57,12 @@ vertical_alignment = 1
 [node name="Menu" parent="Panel/CenterContainer/VBoxContainer" instance=ExtResource("2_menu")]
 layout_mode = 2
 size_flags_horizontal = 4
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0

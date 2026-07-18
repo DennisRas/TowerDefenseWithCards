@@ -1,10 +1,10 @@
-[gd_resource type="Theme" load_steps=11 format=3]
+[gd_resource type="Theme" format=3 uid="uid://bthknq8h5vdbm"]
 
 [ext_resource type="StyleBox" path="res://themes/styles/button_normal.tres" id="1_btn_normal"]
 [ext_resource type="StyleBox" path="res://themes/styles/button_hover.tres" id="2_btn_hover"]
 [ext_resource type="StyleBox" path="res://themes/styles/button_pressed.tres" id="3_btn_pressed"]
 [ext_resource type="StyleBox" path="res://themes/styles/button_focus.tres" id="4_btn_focus"]
-[ext_resource type="StyleBox" path="res://themes/styles/button_disabled.tres" id="5_btn_disabled"]
+[ext_resource type="StyleBox" uid="uid://b4nr5ccmjp4t" path="res://themes/styles/button_disabled.tres" id="5_btn_disabled"]
 [ext_resource type="StyleBox" path="res://themes/styles/card_normal.tres" id="6_card_normal"]
 [ext_resource type="StyleBox" path="res://themes/styles/card_hover.tres" id="7_card_hover"]
 [ext_resource type="StyleBox" path="res://themes/styles/card_pressed.tres" id="8_card_pressed"]
